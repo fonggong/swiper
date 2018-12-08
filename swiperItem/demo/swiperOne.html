@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>覆盖式轮播图</title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.container{
+			height: 300px;
+			width: 500px;
+			border: 1px solid #FF1493;
+			margin:10px auto;
+			background-repeat: no-repeat;
+			background-size: cover;
+			transition: 1s all;
+			-moz-transition: 1s all;
+		}
+		.btn{
+			margin: 10px;
+			text-align: center;
+		}
+		.btn>button{
+			width: 80px;
+			height: 40px;
+			border: 2px solid #AAAAAA;
+			background: #FF4040;
+			font-size: 20px;
+			color: #FFFFFF;
+			cursor: pointer;
+			outline: medium;
+			border-radius: 4px;
+		}
+		.btn>button:hover{
+			background: #FF0000;
+		}
+	</style>
+	<body>
+		<div class="container">
+			
+		</div>
+		<div class="btn">
+			<button>prev</button>
+			<button>next</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var container=document.querySelector('.container');
+		var btn=document.querySelectorAll('.btn>button');
+		
+		var mm=['../img/mm1.jpg','../img/mm2.jpg','../img/mm3.jpg','../img/mm4.jpg','../img/mm5.jpg','../img/mm6.jpg']
+	
+	container.style.backgroundImage='url(' + mm[0] + ')';
+	var fg=0;
+	btn[0].onclick=function(){
+		fg--;
+		if(fg<0){
+			fg=mm.length-1;
+		}
+		changeImg()
+	}
+	btn[1].onclick=function(){
+		fg++;
+		if(fg>mm.length-1){
+			fg=0;
+		}
+		changeImg()
+	}
+	
+	function changeImg(){
+		container.style.backgroundImage='url(' + mm[fg] +')';
+	}
+	function go(){
+		fg++;
+		if(fg>mm.length-1){
+			fg=0;
+		}
+		changeImg()
+	}
+	setInterval(go,2000);
+	</script>
+</html>

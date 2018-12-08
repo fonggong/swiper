@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery动画</title>
+		<script src="../js/jquery.js" type="text/javascript">
+			
+		</script>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		.div{
+			width: 400px;
+			height: 500px;
+			border: 1px solid red;
+			margin: auto;
+			overflow: hidden;
+		}
+		.son{
+			width: 2800px;
+			height: 500px;
+			position: relative;
+		}
+		.son>img{
+			width: 400px;
+			height: 500px;
+			
+		}
+		.play2{
+			text-align: center;
+			margin-top: 20px;
+		}
+		button{
+			width: 90px;
+			height: 30px;
+			font-size: 20px;
+		}
+	</style>
+	<body>
+		<div class="div">
+			<div class="son">
+				<img src="../img/m9.jpg"/><img src="../img/m3.jpg"/><img src="../img/m4.jpg"/><img src="../img/m5.jpg"/><img src="../img/m6.jpg"/><img src="../img/m7.jpg"/><img src="../img/m9.jpg"/>
+			</div>
+		</div>
+		<div class="play2">
+			<button>prev</button><button>next</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			var fg=0;
+			$("button").eq(0).click(function(){	
+				fg++;
+				if(fg==1){
+					fg=-6; 
+					$(".son").animate({"left":fg*400+"px"},0);
+					//setTimeout(function(){
+						++fg;
+						$(".son").animate({"left":fg*400+"px"},1000);
+					//})
+					
+				}else{
+					$(".son").animate({"left":fg*400+"px"},1000);
+				}
+				
+				
+			});
+			$("button").eq(1).click(function(){
+				fg--;
+				if(fg==-7){
+					
+					fg=0; 
+					$(".son").animate({"left":fg*400+"px"},0);
+					//setTimeout(function(){
+						--fg;
+						$(".son").animate({"left":fg*400+"px"},1000);
+					//},10)
+				}else{
+					$(".son").animate({"left":fg*400+"px"},1000);
+				}
+				
+			})
+			
+			function auto(){
+				fg--;
+				if(fg==-7){
+					
+					fg=0; 
+					$(".son").animate({"left":fg*400+"px"},0);
+					//setTimeout(function(){
+						--fg;
+						$(".son").animate({"left":fg*400+"px"},1000);
+					//},10)
+				}else{
+					$(".son").animate({"left":fg*400+"px"},1000);
+				}
+			}
+			
+			setInterval(auto,2000);
+
+		})
+	</script>
+</html>

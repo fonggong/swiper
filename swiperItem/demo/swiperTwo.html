@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>动画式轮播图</title>
+		<style type="text/css">
+			.container {
+				width: 500px;
+				height: 300px;
+				margin: 10px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.content {
+				height: 300px;
+				width: 3000px;
+				position: absolute;
+				transition: all 1s;
+				-moz-transition: 1s all;
+			}
+			
+			.content>img {
+				width: 500px;
+				height: 300px;
+			}
+			
+			.btn {
+				text-align: center;
+			}
+			
+			.btn>button {
+				height: 40px;
+				width: 80px;
+				font-size: 20px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="content">
+				<img src="../img/mm1.jpg" /><img src="../img/mm2.jpg" /><img src="../img/mm3.jpg" /><img src="../img/mm4.jpg" /><img src="../img/mm5.jpg" /><img src="../img/mm1.jpg" />
+			</div>
+		</div>
+		<div class="btn">
+			<button>prev</button>
+			<button>next</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var content = document.querySelector('.content')
+		var btn = document.querySelectorAll('.btn>button');
+		var fg = 0;
+		btn[1].onclick = function() {
+			fg--;
+			if(fg == -6) {
+				content.style.transition = 'none';
+				fg = 0;
+				content.style.left = '500' * fg + 'px';
+				setTimeout(function() {
+					fg--;
+					content.style.transition = '1s all';
+					content.style.left = '500' * fg + 'px';
+				},1)
+			} else {
+				content.style.left = '500' * fg + 'px';
+			}
+		}
+
+		btn[0].onclick = function() {
+			fg++;
+			if(fg == 1) {
+				content.style.transition = 'none';
+				fg = -5;
+				content.style.left = '500' * fg + 'px';
+				setTimeout(function() {
+					fg++;
+					content.style.transition = '1s all';
+					content.style.left = '500' * fg + 'px';
+				},1)
+			} else {
+				content.style.left = '500' * fg + 'px';
+			}
+		}
+		
+		function auto(){
+			fg--;
+			if(fg == -6) {
+				content.style.transition = 'none';
+				fg = 0;
+				content.style.left = '500' * fg + 'px';
+				setTimeout(function() {
+					fg--;
+					content.style.transition = '1s all';
+					content.style.left = '500' * fg + 'px';
+				},1)
+			} else {
+				content.style.left = '500' * fg + 'px';
+			}
+		}
+		setInterval(auto,2000);
+	</script>
+
+</html>
